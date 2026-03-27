@@ -1,0 +1,49 @@
+# Dependências
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.*.local
+*.env
+*.env.local
+backend/.env
+frontend/.env
+
+# Segredos / certificados
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Config local (não publicar)
+backend/config/config.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+.next/
+out/
+coverage/
+
+# Logs
+logs/
+*.log
+
+# Temporários
+.temp/
+temp/
