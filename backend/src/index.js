@@ -43,17 +43,24 @@ app.get('/api/db-test', async (req, res) => {
   }
 });
 
-// Iniciar servidor
-(async () => {
+// Na Vercel, a aplicação é executada como uma função serverless.
+// Em desenvolvimento, mantemos o servidor HTTP local habitual.
+const startLocalServer = async () => {
   try {
     await db.sequelize.authenticate();
     console.log('✅ Conexão com BD bem-sucedida!');
     
-    app.listen(process.env.PORT || 5000, () => {
-      console.log(`🚀 Servidor rodando em http://localhost:${process.env.PORT || 5000}`);
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
     });
   } catch (error) {
     console.error('❌ Erro ao conectar à BD:', error);
     process.exit(1);
   }
-})();
+};
+
+if (!process.env.VERCEL) {
+  startLocalServer();
+}
+
+export default app;
