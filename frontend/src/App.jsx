@@ -6,28 +6,12 @@ import CreateUserPage from './pages/CreateUserPage'
 import ChangePasswordPage from './pages/ChangePasswordPage'
 import './App.css'
 
-const DEV_BYPASS_LOGIN = true
-const DEV_BYPASS_USER = {
-  id: 'dev-user',
-  email: 'admin@escola.pt',
-  fullName: 'Admin (Bypass)',
-  role: 'admin',
-  firstLogin: false
-}
-
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (DEV_BYPASS_LOGIN) {
-      setIsAuthenticated(true)
-      setUser(DEV_BYPASS_USER)
-      setLoading(false)
-      return
-    }
-
     // Verificar se existe token no localStorage
     const token = localStorage.getItem('token')
     const savedUser = localStorage.getItem('user')
@@ -64,8 +48,6 @@ function App() {
         <Route 
           path="/login" 
           element={
-            DEV_BYPASS_LOGIN ?
-              <Navigate to="/dashboard" /> :
             isAuthenticated ? 
               <Navigate to="/dashboard" /> : 
               <LoginPage onLogin={handleLogin} />
