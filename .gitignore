@@ -47,3 +47,11 @@ logs/
 # Temporários
 .temp/
 temp/
+
+# Documentation
+ARCHITECTURE.md
+MODELS_DOCUMENTATION.md
+QUICKSTART.md
+SETUP_COMPLETED.md
+SETUP_GUIDE.md
+SUMMARY.md
